@@ -1,0 +1,14 @@
+﻿{% extends "website/base.html" %}
+
+{% block content %}
+	<div>
+		{% if city.photo %}
+			<img src="{{ city.photo.url }}" height="100">
+		{% endif %}
+		<h1>{{ city.name }}</h1>
+		<p>{{ city.about }}</p>
+		<a href="{% url "city_edit" pk=city.pk %}">Edit</a>
+		<a href="{% url "delete_city" pk=city.pk %}">Delete</a>
+
+	</div>
+{% endblock %}

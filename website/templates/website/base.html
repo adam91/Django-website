@@ -1,0 +1,16 @@
+﻿{% load staticfiles %}
+
+<html>
+	<head>
+	<title>World</title>
+	</head>
+	<body>
+		<li><a href="/continents">kontynenty</a></li>
+		<li><a href="/countries">kraje</a></li>
+		<li><a href="/cities">miasta</a></li>
+		<li><a href="/country/new">Dodaj kraj</a></li>
+		<li><a href="/city/new">Dodaj miasto</a></li>
+		{% block content %}
+		{% endblock %}
+	</body>
+</html>

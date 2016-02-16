@@ -1,0 +1,11 @@
+﻿{% extends "website/base.html" %}
+
+{% block content %}
+	{% for city in cities %}
+		<table width=300 height=120>
+			<tr>
+				<td><a href="{% url "website.views.city_detail" pk=city.pk %}">{{ city }}</a></td>
+			</tr>
+		</table>	
+	{% endfor %}
+{% endblock %}

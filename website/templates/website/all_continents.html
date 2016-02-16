@@ -1,0 +1,11 @@
+﻿{% extends "website/base.html" %}
+
+{% block content %}
+	{% for continent in continents %}
+		<table width=300 height=120>
+			<tr>
+				<td><a href="{% url 'website.views.continent_detail' pk=continent.pk %}">{{ continent.name }}</a></td>
+			</tr>
+		</table>	
+	{% endfor %}
+{% endblock %}	
