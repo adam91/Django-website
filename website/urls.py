@@ -21,4 +21,9 @@ urlpatterns = [
     url(r'^city/(?P<pk>[0-9]+)/edit/$', views.city_edit, name='city_edit'),
     url(r'^country/(?P<pk>[0-9]+)/delete/$', views.delete_country, name='delete_country'),
     url(r'^city/(?P<pk>[0-9]+)/delete/$', views.delete_city, name='delete_city'),
+    url(r'^login/$', views.login),
+    url(r'^authorized/$', views.auth_view),
+    url(r'^logout/$', views.logout),
+    url(r'^loggedin/$', views.loggedin),
+    url(r'^invalid/$', views.invalid_login),
 ]

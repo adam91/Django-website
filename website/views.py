@@ -1,7 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, render_to_response, get_object_or_404, redirect
 
 from .models import *
 from .forms import CountryForm, CityForm
+
+from django.contrib import auth
+from django.core.context_processors import csrf
+from django.http import HttpResponseRedirect
 
 def all_continents(request):
     continents = Continent.objects.all().order_by('name')
@@ -44,7 +48,6 @@ def city_new(request):
         form = CityForm(request.POST, request.FILES)
         if form.is_valid():
             city = form.save(commit=False)
-            city.author = request.user
             city.save()
             form.save_m2m()
             return redirect('website.views.city_detail', pk=city.pk)
@@ -91,3 +94,30 @@ def delete_city(request, pk):
     city.delete()
     cities = City.objects.all().order_by('name')
     return render(request, 'website/all_cities.html', {'cities': cities})
+
+def login(request):
+    login = {}
+    login.update(csrf(request))
+    return render_to_response('website/login.html', login)
+
+def auth_view(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = auth.authenticate(username=username, password=password)
+
+    if user is not None:
+        auth.login(request, user)
+        return redirect('/continents')
+    else:
+        return HttpResponseRedirect('/invalid')
+    
+def loggedin(request):
+    return render_to_response('website/loggedin.html',
+                              {'full_name': request.user.username})
+
+def invalid_login(request):
+    return render_to_response('website/invalid_login.html')
+
+def logout(request):
+    auth.logout(request)
+    return render_to_response('website/logout.html')
