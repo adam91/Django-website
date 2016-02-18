@@ -2,6 +2,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from . import views
 import os.path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 media_dir = os.path.join(os.path.dirname(__file__),'media')
 
@@ -26,4 +27,6 @@ urlpatterns = [
     url(r'^logout/$', views.logout),
     url(r'^loggedin/$', views.loggedin),
     url(r'^invalid/$', views.invalid_login),
+    url(r'^register/$', views.register_user, name='register_user'),
+    url(r'^register_success/$', views.register_success, name='register_success'),
 ]

@@ -1,11 +1,12 @@
 from django.shortcuts import render, render_to_response, get_object_or_404, redirect
 
-from .models import *
-from .forms import CountryForm, CityForm
+from models import *
+from forms import CountryForm, CityForm, RegistrationForm
 
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
+from django.template import RequestContext
 
 def all_continents(request):
     continents = Continent.objects.all().order_by('name')
@@ -121,3 +122,21 @@ def invalid_login(request):
 def logout(request):
     auth.logout(request)
     return render_to_response('website/logout.html')
+
+
+def register_user(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/register_success')
+        print form.errors
+
+    args = {}
+    args.update(csrf(request))
+
+    args['form'] = RegistrationForm()
+    return render_to_response('website/register.html', args)
+
+def register_success(request):
+    return render_to_response('website/register_success.html')
