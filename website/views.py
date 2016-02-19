@@ -8,6 +8,10 @@ from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 
+def all_continents_start_site(request):
+    continents = Continent.objects.all().order_by('name')
+    return render(request, 'website/start_site.html', {'continents' : continents})
+
 def all_continents(request):
     continents = Continent.objects.all().order_by('name')
     return render(request, 'website/all_continents.html', {'continents' : continents})

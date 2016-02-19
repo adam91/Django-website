@@ -9,7 +9,7 @@ media_dir = os.path.join(os.path.dirname(__file__),'media')
 urlpatterns = [
     url(r'^media/(.*)$','django.views.static.serve',{'document_root': media_dir}),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.all_continents, name='all_continents'),
+    url(r'^$', views.all_continents_start_site, name='all_continents_start_site'),
     url(r'^continents$', views.all_continents, name='all_continents'),
     url(r'^countries$', views.all_countries, name='all_countries'),
     url(r'^cities$', views.all_cities, name='all_cities'),

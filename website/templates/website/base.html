@@ -1,19 +1,39 @@
-﻿{% load staticfiles %}
-
+﻿ <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 	<head>
-	<title>World</title>
+		<title>World!</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="{% static "css/website.css" %}">
 	</head>
-	<body>
-		<li><a href="/continents">kontynenty</a></li>
-		<li><a href="/countries">kraje</a></li>
-		<li><a href="/cities">miasta</a></li>
-		<li><a href="/country/new">Dodaj kraj</a></li>
-		<li><a href="/city/new">Dodaj miasto</a></li>
-		<li><a href="/login">Zaloguj</a></li>
-		<li><a href="/logout">Wyloguj</a></li>
-		<li><a href=/register/>Zarejestruj się!</a></li>
+	 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+		<nav class="navbar navbar-default navbar-fixed-top">
+		  <div class="container">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#">Logo</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="#about">OPIS</a></li>
+				<li><a href="/continents">KONTYNENTY</a></li>
+				<li><a href="/countries">KRAJE</a></li>
+				<li><a href="/cities">MIASTA</a></li>
+				<li><a href="#photos">ZDJĘCIA</a></li>
+			  </ul>
+			</div>
+		  </div>
+		</nav>
+		<div class="container-fluid" style="padding-top: 70px";>
 		{% block content %}
 		{% endblock %}
+		</div>
 	</body>
 </html>

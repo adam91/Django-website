@@ -2,10 +2,12 @@
 
 {% block content %}
 	{% for country in countries %}
-		<table width=300 height=120>
-			<tr>
-				<td><a href="{% url "website.views.country_detail" pk=country.pk %}">{{ country }}</a></td>
-			</tr>
-		</table>	
+		<div class="table-responsive">
+			<table class="table">
+				<tr>
+					<td><a href="{% url "website.views.country_detail" pk=country.pk %}">{{ country }}</a></td>
+				</tr>
+			</table>
+		</div>
 	{% endfor %}
 {% endblock %}
