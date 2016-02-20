@@ -1,13 +1,23 @@
 ﻿{% extends "website/base.html" %}
 
 {% block content %}
-	{% for country in countries %}
-		<div class="table-responsive">
-			<table class="table">
-				<tr>
-					<td><a href="{% url "website.views.country_detail" pk=country.pk %}">{{ country }}</a></td>
-				</tr>
-			</table>
-		</div>
-	{% endfor %}
+	<div class="table-responsive">
+		<table class="table">
+			<tbody>
+				{% for country in countries %}
+					<tr>
+						 <div class="col-sm-2">
+							<td><img src="{{ country.photo.url }}" height="80"></td>
+						</div>
+						<div class="col-sm-5">
+							<td><a href="{% url 'website.views.country_detail' pk=country.pk %}"><b>{{ country.name }}</b></a></td>
+						</div>
+						<div class="col-sm-5">
+							<td>{{ country.continent }}</td>
+						</div>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock %}

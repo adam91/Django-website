@@ -24,6 +24,10 @@ def all_cities(request):
     cities = City.objects.all().order_by('name')
     return render(request, 'website/all_cities.html', {'cities' : cities})
 
+def gallery(request):
+    cities = City.objects.all().order_by('name')
+    return render(request, 'website/gallery.html', {'cities' : cities})
+
 def continent_detail(request, pk):
     continent = get_object_or_404(Continent, pk=pk)
     return render(request, 'website/continent_detail.html', {'continent': continent})

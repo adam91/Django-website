@@ -3,6 +3,7 @@ from django.contrib import admin
 from . import views
 import os.path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import TemplateView
 
 media_dir = os.path.join(os.path.dirname(__file__),'media')
 
@@ -29,4 +30,6 @@ urlpatterns = [
     url(r'^invalid/$', views.invalid_login),
     url(r'^register/$', views.register_user, name='register_user'),
     url(r'^register_success/$', views.register_success, name='register_success'),
+    url(r'^gallery/$', views.gallery, name='gallery'),
+    url(r'^about/$', TemplateView.as_view(template_name='website/about.html')),
 ]

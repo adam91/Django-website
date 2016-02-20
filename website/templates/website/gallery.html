@@ -1,0 +1,7 @@
+﻿{% extends "website/base.html" %}
+
+{% block content %}
+	{% for city in cities %}
+		<img src="{{ city.photo.url }}">
+	{% endfor %}
+{% endblock %}

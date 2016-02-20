@@ -1,13 +1,20 @@
 ﻿{% extends "website/base.html" %}
 
 {% block content %}
-	{% for continent in continents %}
-		<div class="table-responsive">
-			<table class="table">
-				
-					<td><a href="{% url 'website.views.continent_detail' pk=continent.pk %}">{{ continent.name }}</a></td>
-				
-			</table>
-		</div>
-	{% endfor %}
-{% endblock %}	
+	<div class="table-responsive">
+		<table class="table">
+			<tbody>
+				{% for continent in continents %}
+					<tr>
+						 <div class="col-sm-3">
+							<td><img src="{{ continent.photo.url }}" height="80"></td>
+						</div>
+						 <div class="col-sm-9">
+							<td><span><a href="{% url 'website.views.continent_detail' pk=continent.pk %}"><b>{{ continent.name }}</b></a></span></td>
+						</div>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

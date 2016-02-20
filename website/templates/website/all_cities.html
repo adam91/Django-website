@@ -1,11 +1,23 @@
 ﻿{% extends "website/base.html" %}
 
 {% block content %}
-	{% for city in cities %}
-		<table width=300 height=120>
-			<tr>
-				<td><a href="{% url "website.views.city_detail" pk=city.pk %}">{{ city }}</a></td>
-			</tr>
-		</table>	
-	{% endfor %}
+	<div class="table-responsive">
+		<table class="table">
+			<tbody>
+				{% for city in cities %}
+					<tr>
+						 <div class="col-sm-2">
+							<td><img src="{{ city.photo.url }}" height="80"></td>
+						</div>
+						<div class="col-sm-5">
+							<td><a href="{% url 'website.views.city_detail' pk=city.pk %}"><b>{{ city.name }}</b></a></td>
+						</div>
+						<div class="col-sm-5">
+							<td>{{ city.country }}</td>
+						</div>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock %}
