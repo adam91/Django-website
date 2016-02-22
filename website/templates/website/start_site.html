@@ -45,7 +45,11 @@ $(document).ready(function(){
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 			  <ul class="nav navbar-nav navbar-right">
-				<li><a href="#about">OPIS</a></li>
+				{% if user.is_authenticated %}
+					<li><a href="#about">WYLOGUJ</a></li>
+				{% else %}
+					<li><a href="#about">ZALOGUJ</a></li>
+				{% endif %}
 				<li><a href="#continents">KONTYNENTY</a></li>
 				<li><a href="#countries">KRAJE</a></li>
 				<li><a href="#cities">MIASTA</a></li>
@@ -59,11 +63,14 @@ $(document).ready(function(){
 			<p>Ucz się nowych informacji o państwach, dodawaj te brakujące, działaj!</p>
 		</div>
 		<div id="about" class="container-fluid">
-			<h2>O stronie</h2>
-			<h3>Strona umożliwia dodawanie miast i państw, a także przeglądanie tych istniejących.</h3>
-			<p>Brakuje Twojego miasta? Spróbuj je dodać!</p>
-			<h3><a href="/login">Zaloguj się</a></h3>
-			<h3><a href=/register/>Zarejestruj się!</a></h3>
+			{% if user.is_authenticated %}
+				<h3><a href="/login">Wyloguj się</a></h3>
+			{% else %}
+				<h2><a href=/login/>Zaloguj się</a></h2>
+				<h4><a href=/register/>Rejestracja</a></h4>
+			{% endif %}
+			<h2>Strona umożliwia dodawanie miast i państw, a także przeglądanie tych istniejących.</h2>
+			<p><a href="/city/new/">Brakuje Twojego miasta? Spróbuj je dodać!</a></p>
 		</div>
 		<div id="continents" class="container-fluid bg-grey">
 		  <h2>Kontynenty</h2>
@@ -103,22 +110,22 @@ $(document).ready(function(){
 			<div class="col-sm-4">
 			  <div class="thumbnail">
 				<img src="media/images/photos/gdynia.jpg" alt="Gdynia">
-				<p><strong>Gdynia</strong></p>
+				<a href="city/1/"><p><strong>Gdynia</strong></p></a>
 				<p>Polska</p>
 			  </div>
 			</div>
 			<div class="col-sm-4">
 			  <div class="thumbnail">
-				<img src="" alt="">
-				<p><strong></strong></p>
-				<p></p>
+				<img src="media/images/photos/berno.jpg" alt="Berno">
+				<a href="city/2/"><p><strong>Berno</strong></p></a>
+				<p>Szwajcaria</p>
 			  </div>
 			</div>
 			<div class="col-sm-4">
 			  <div class="thumbnail">
-				<img src="" alt="">
-				<p><strong></strong></p>
-				<p></p>
+				<img src="media/images/photos/krakow.jpg" alt="Krakow">
+				<a href="city/3/"><p><strong>Kraków</strong></p></a>
+				<p>Polska</p>
 			  </div>
 			</div>
 		</div>

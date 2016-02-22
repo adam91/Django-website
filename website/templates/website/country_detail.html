@@ -4,14 +4,15 @@
 	<div>
 		{% if country.photo %}
 		<img src="{{ country.photo.url }}" height="100">
+		<li><a href="{% url "country_edit" pk=country.pk %}">Edytuj</a></li>
+		<li><a href="{% url "delete_country" pk=country.pk %}">Usuń</a></li>
 		{% endif %}
 		<h1>{{ country.name }}</h1>
 		<p>{{ country.about }}</p>
-		<h1>Miasta leżące w kraju</h1>
+		<h3 style="text-align: center">Miasta leżące w kraju</h3>
 		{% for city in country.city_set.all %}
 			<h1 align="center"><a href="{% url 'website.views.city_detail' pk=city.pk %}">{{ city.name }}</a></h1>
 		{% endfor %}
-		<a href="{% url "country_edit" pk=country.pk %}">Edit</a>
-		<a href="{% url "delete_country" pk=country.pk %}">Delete</a>
+	
 	</div>
 {% endblock %}

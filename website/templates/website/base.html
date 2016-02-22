@@ -23,7 +23,11 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 			  <ul class="nav navbar-nav navbar-right">
-				<li><a href="/about">OPIS</a></li>
+				{% if user.is_authenticated %}
+					<li><a href="/logout">WYLOGUJ</a></li>
+				{% else %}
+					<li><a href="/login">ZALOGUJ</a></li>
+				{% endif %}
 				<li><a href="/continents">KONTYNENTY</a></li>
 				<li><a href="/countries">KRAJE</a></li>
 				<li><a href="/cities">MIASTA</a></li>

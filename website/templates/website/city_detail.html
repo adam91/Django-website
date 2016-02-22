@@ -7,8 +7,7 @@
 		{% endif %}
 		<h1>{{ city.name }}</h1>
 		<p>{{ city.about }}</p>
-		<a href="{% url "city_edit" pk=city.pk %}">Edit</a>
-		<a href="{% url "delete_city" pk=city.pk %}">Delete</a>
-
+			<li><a href="{% url "city_edit" pk=city.pk %}">Edytuj</a></li>
+			<li><a href="{% url "delete_city" pk=city.pk %}">Usuń</a></li>
 	</div>
 {% endblock %}

@@ -1,16 +1,19 @@
 ﻿{% extends "website/base.html" %}
 
 {% block content %}
+	<div class="add">
+		<h4><a href="/city/new">Dodaj miasto</a></h4>
+	</div>
 	<div class="table-responsive">
 		<table class="table">
 			<tbody>
 				{% for city in cities %}
 					<tr>
 						 <div class="col-sm-2">
-							<td><img src="{{ city.photo.url }}" height="80"></td>
+							<td><img src="{{ city.photo.url }}" height="80" width="140"></td>
 						</div>
 						<div class="col-sm-5">
-							<td><a href="{% url 'website.views.city_detail' pk=city.pk %}"><b>{{ city.name }}</b></a></td>
+							<td text-align:center;><a href="{% url 'website.views.city_detail' pk=city.pk %}"><b>{{ city.name }}</b></a></td>
 						</div>
 						<div class="col-sm-5">
 							<td>{{ city.country }}</td>

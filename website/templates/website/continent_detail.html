@@ -5,7 +5,7 @@
 		<img src="{{ continent.photo.url }}" height="100">
 		<h1>{{ continent.name }}</h1>
 		<p>{{ continent.about }}</p>
-		<h1>Kraje należące do kontynentu:</h1>
+		<h3 style="text-align:center">Kraje należące do kontynentu:</h3>
 		{% for country in continent.country_set.all %}
 			<h1 align="center"><a href="{% url 'website.views.country_detail' pk=country.pk %}">{{ country.name }}</a></h1>
 		{% endfor %}

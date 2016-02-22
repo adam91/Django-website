@@ -1,18 +1,21 @@
 ﻿{% extends "website/base.html" %}
 
 {% block content %}
+	<div class="add">
+		<h4><a href="/country/new">Dodaj kraj</a></h4>
+	</div>
 	<div class="table-responsive">
 		<table class="table">
 			<tbody>
 				{% for country in countries %}
 					<tr>
-						 <div class="col-sm-2">
-							<td><img src="{{ country.photo.url }}" height="80"></td>
+						 <div class="col-sm-4">
+							<td><img src="{{ country.photo.url }}" height="80" width="120"></td>
 						</div>
-						<div class="col-sm-5">
+						<div class="col-sm-4">
 							<td><a href="{% url 'website.views.country_detail' pk=country.pk %}"><b>{{ country.name }}</b></a></td>
 						</div>
-						<div class="col-sm-5">
+						<div class="col-sm-4">
 							<td>{{ country.continent }}</td>
 						</div>
 					</tr>

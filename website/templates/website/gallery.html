@@ -2,6 +2,8 @@
 
 {% block content %}
 	{% for city in cities %}
-		<img src="{{ city.photo.url }}">
+		<div class="thumbnail2">
+			<img src="{{ city.photo.url }}">
+		</div>
 	{% endfor %}
 {% endblock %}
